@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  php:
+    image: phpdockerio/php72-cli
+    volumes:
+      - ./:/var/www/html/modules/ps_cartbanne
+    working_dir: /var/www/html/modules/ps_cartbanne
+    environment:
+      _PS_ROOT_DIR_: /var/www/html
