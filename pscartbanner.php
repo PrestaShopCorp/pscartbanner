@@ -56,13 +56,11 @@ class Pscartbanner extends Module
         $this->version = '1.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
-        $this->bootstrap = true;
 
         parent::__construct();
 
         $this->displayName = $this->l('Cart banner');
         $this->description = $this->l('Adds a banner on cart with customized message.');
-        $this->confirmUninstall = $this->l('Are you sure you want to uninstall this module?');
         $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
     }
 
@@ -106,10 +104,9 @@ class Pscartbanner extends Module
      */
     public function installConfiguration()
     {
-        $langs = Language::getLanguages(false);
         $trads = [];
 
-        foreach ($langs as $lang) {
+        foreach (Language::getLanguages(false) as $lang) {
             if ($lang['code'] == 'fr') {
                 $trads[$lang['id_lang']] = 'Message à nos clients ' . PHP_EOL . " En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !";
             } else {

@@ -29,6 +29,7 @@
             "PrestaShop\\Module\\CartBanner\\": "src/"
         },
         "classmap": [
+            "controllers",
             "pscartbanner.php"
         ]
     },
