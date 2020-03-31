@@ -4,20 +4,25 @@
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
+ * This source file is subject to the Open Software License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
+ * https://opensource.org/licenses/OSL-3.0
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@prestashop.com so we can send you a copy immediately.
  *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to https://www.prestashop.com for more information.
+ *
  * @author    PrestaShop SA <contact@prestashop.com>
  * @copyright 2007-2020 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -33,7 +38,7 @@ class Pscartbanner extends Module
      * @var array Hooks used
      */
     public $hooks = [
-        'displayContentWrapperTop'
+        'displayContentWrapperTop',
     ];
 
     /**
@@ -106,9 +111,9 @@ class Pscartbanner extends Module
 
         foreach ($langs as $lang) {
             if ($lang['code'] == 'fr') {
-                $trads[$lang['id_lang']] = "Message à nos clients " . PHP_EOL . " En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !";
+                $trads[$lang['id_lang']] = 'Message à nos clients ' . PHP_EOL . " En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !";
             } else {
-                $trads[$lang['id_lang']] = "Message to our customers " . PHP_EOL . " Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !";
+                $trads[$lang['id_lang']] = 'Message to our customers ' . PHP_EOL . " Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !";
             }
         }
 
@@ -137,6 +142,7 @@ class Pscartbanner extends Module
 
         if ($id_tab) {
             $tab = new Tab($id_tab);
+
             return $tab->delete();
         }
 
@@ -157,8 +163,6 @@ class Pscartbanner extends Module
      */
     public function getContent()
     {
-
-
         Tools::redirectAdmin($this->context->link->getAdminLink(static::MODULE_ADMIN_CONTROLLER));
     }
 
