@@ -14,7 +14,7 @@ function deploy() {
         sudo -u presthost -H bash -c \"mkdir -p /presthost/core/img/tmp &>/dev/null;\";
         sudo -u presthost -H bash -c \"unzip -o /$FILEPATH -d /presthost/userland/modules > /dev/null 2>&1;\";
         rm -f /${FILEPATH};
-        sudo -u presthost --preserve-env -H bash -c '/presthost/core/bin/console  prestashop:module install ps_cartbanner';
+        sudo -u presthost --preserve-env -H bash -c '/presthost/core/bin/console  prestashop:module install pscartbanner';
         "
 }
 

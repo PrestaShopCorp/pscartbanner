@@ -27,12 +27,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-$autoloadPath = __DIR__ . '/vendor/autoload.php';
-if (file_exists($autoloadPath)) {
-    require_once $autoloadPath;
-}
-
-class Pscartbanner extends Module
+class PsCartBanner extends Module
 {
     /**
      * @var array Hooks used
@@ -96,7 +91,7 @@ class Pscartbanner extends Module
             $this->displayName
         );
 
-        return $tab->add();
+        return (bool) $tab->add();
     }
 
     /**
@@ -104,18 +99,20 @@ class Pscartbanner extends Module
      */
     public function installConfiguration()
     {
-        $trads = [];
+        /** @var array $languages */
+        $languages = Language::getLanguages(false);
+        $bannerContentTranslated = [];
 
-        foreach (Language::getLanguages(false) as $lang) {
-            if ($lang['code'] == 'fr') {
-                $trads[$lang['id_lang']] = 'Message à nos clients ' . PHP_EOL . " En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !";
+        foreach ($languages as $language) {
+            if (Tools::strtolower($language['iso_code']) === 'fr') {
+                $bannerContentTranslated[(int) $language['id_lang']] = "<h4>Message à nos clients</h4><p>En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !</p>";
             } else {
-                $trads[$lang['id_lang']] = 'Message to our customers ' . PHP_EOL . " Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !";
+                $bannerContentTranslated[(int) $language['id_lang']] = "<h4>Message to our customers</h4><p>Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !</p>";
             }
         }
 
-        return Configuration::updateValue(static::CONFIG_BANNER_CONTENT, $trads)
-            && Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#189300');
+        return (bool) Configuration::updateValue(static::CONFIG_BANNER_CONTENT, $bannerContentTranslated)
+            && (bool) Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#189300');
     }
 
     /**
@@ -140,7 +137,7 @@ class Pscartbanner extends Module
         if ($id_tab) {
             $tab = new Tab($id_tab);
 
-            return $tab->delete();
+            return (bool) $tab->delete();
         }
 
         return true;
@@ -151,8 +148,8 @@ class Pscartbanner extends Module
      */
     public function uninstallConfiguration()
     {
-        return Configuration::deleteByName(static::CONFIG_BANNER_CONTENT)
-            && Configuration::deleteByName(static::CONFIG_BANNER_BORDER_COLOR);
+        return (bool) Configuration::deleteByName(static::CONFIG_BANNER_CONTENT)
+            && (bool) Configuration::deleteByName(static::CONFIG_BANNER_BORDER_COLOR);
     }
 
     /**

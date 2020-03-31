@@ -37,9 +37,9 @@ class AdminPsCartBannerController extends ModuleAdminController
         parent::__construct();
 
         $this->fields_options = [
-            'ps_cartbanner' => [
+            'pscartbanner' => [
                 'fields' => [
-                    Pscartbanner::CONFIG_BANNER_CONTENT => [
+                    PsCartBanner::CONFIG_BANNER_CONTENT => [
                         'type' => 'textareaLang',
                         'rows' => 5,
                         'cols' => 40,
@@ -49,7 +49,7 @@ class AdminPsCartBannerController extends ModuleAdminController
                         'lang' => true,
                         'autoload_rte' => true,
                     ],
-                    Pscartbanner::CONFIG_BANNER_BORDER_COLOR => [
+                    PsCartBanner::CONFIG_BANNER_BORDER_COLOR => [
                         'type' => 'color',
                         'title' => $this->l('Banner border color'),
                         'validation' => 'isColor',
