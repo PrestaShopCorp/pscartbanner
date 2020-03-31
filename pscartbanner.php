@@ -27,7 +27,7 @@ if (file_exists($autoloadPath)) {
     require_once $autoloadPath;
 }
 
-class Ps_cartbanner extends Module
+class Pscartbanner extends Module
 {
     /**
      * @var array Hooks used
@@ -46,7 +46,7 @@ class Ps_cartbanner extends Module
 
     public function __construct()
     {
-        $this->name = 'ps_cartbanner';
+        $this->name = 'pscartbanner';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
         $this->author = 'PrestaShop';
@@ -101,7 +101,18 @@ class Ps_cartbanner extends Module
      */
     public function installConfiguration()
     {
-        return Configuration::updateValue(static::CONFIG_BANNER_CONTENT, array_fill_keys(Language::getIDs(false),'<h4>Make our planet greener and cleaner !</h4><p>To reduce packaging and transportation, group your weekly purchases.</p>'))
+        $langs = Language::getLanguages(false);
+        $trads = [];
+
+        foreach ($langs as $lang) {
+            if ($lang['code'] == 'fr') {
+                $trads[$lang['id_lang']] = "Message à nos clients " . PHP_EOL . " En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes !";
+            } else {
+                $trads[$lang['id_lang']] = "Message to our customers " . PHP_EOL . " Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !";
+            }
+        }
+
+        return Configuration::updateValue(static::CONFIG_BANNER_CONTENT, $trads)
             && Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#189300');
     }
 
@@ -146,6 +157,8 @@ class Ps_cartbanner extends Module
      */
     public function getContent()
     {
+
+
         Tools::redirectAdmin($this->context->link->getAdminLink(static::MODULE_ADMIN_CONTROLLER));
     }
 
