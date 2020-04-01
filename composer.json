@@ -1,33 +1,34 @@
 {
-  "type": "prestashop-module",
-  "name": "prestashop/pscartbanner",
-  "description": "PrestaShop module pscartbanner",
-  "homepage": "https://github.com/PrestaShopCorp/pscartbanner",
-  "license": "AFL-3.0",
-  "authors": [
-    {
-      "name": "PrestaShop SA",
-      "email": "contact@prestashop.com"
-    }
-  ],
-  "require": {
-    "php": ">=5.6"
-  },
-  "require-dev": {
-    "prestashop/php-dev-tools": "^2.2"
-  },
-  "config": {
-    "platform": {
-      "php": "5.6.0"
+    "type": "prestashop-module",
+    "name": "prestashop/pscartbanner",
+    "description": "PrestaShop module pscartbanner",
+    "homepage": "https://github.com/PrestaShopCorp/pscartbanner",
+    "license": "AFL-3.0",
+    "authors": [
+        {
+            "name": "PrestaShop SA",
+            "email": "contact@prestashop.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
     },
-    "preferred-install": "dist",
-    "optimize-autoloader": true,
-    "prepend-autoloader": false
-  },
-  "autoload": {
-    "classmap": [
-      "controllers",
-      "pscartbanner.php"
-    ]
-  }
+    "require-dev": {
+        "prestashop/php-dev-tools": "^2.2"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
+        },
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "prepend-autoloader": false
+    },
+    "autoload": {
+        "classmap": [
+            "controllers",
+            "pscartbanner.php"
+        ]
+    },
+    "author": "PrestaShop"
 }
