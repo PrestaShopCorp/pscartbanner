@@ -105,18 +105,16 @@ class PsCartBanner extends Module
 
         foreach ($languages as $language) {
             if (Tools::strtolower($language['iso_code']) === 'fr') {
-                $bannerContentTranslated[(int) $language['id_lang']] = "<p><span class=\"material-icons\"> local_shipping </span><span style=\"color:#189300;\"><strong><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\">Message à nos clients</span></strong></span></p>
-                <p><span style=\"color:#189300;\"><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\">En raison de la cette situation exceptionnelle les délais de préparation et d'expédition de votre commande peuvent être rallongés. N'hésitez pas à grouper vos commandes ! </span><strong><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\"></span></strong></span></p>
-                <p><span style=\"color:#189300;font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\"></span></p>";
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Message à nos clients</strong></p>
+<p>En raison de la cette situation exceptionnelle les délais de préparation et d\'expédition de votre commande peuvent être rallongés. N\'hésitez pas à grouper vos commandes !</p>';
             } else {
-                $bannerContentTranslated[(int) $language['id_lang']] = "<p><span class=\"material-icons\"> local_shipping </span><span style=\"color:#189300;\"><strong><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\">Message to our customers</span></strong></span></p>
-                <p><span style=\"color:#189300;\"><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\">Due to current circumstances some deliveries may take longer than usual ! Don't hesitate to group your weekly orders !</span><strong><span style=\"font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\"></span></strong></span></p>
-                <p><span style=\"color:#189300;font-family:'-apple-system', 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;font-size:14px;\"></span></p>";
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Message to our customers</strong></p>
+<p>Due to current circumstances some deliveries may take longer than usual ! Don\'t hesitate to group your weekly orders !</p>';
             }
         }
 
         return (bool) Configuration::updateValue(static::CONFIG_BANNER_CONTENT, $bannerContentTranslated, true)
-            && (bool) Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#189300');
+            && (bool) Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#000000');
     }
 
     /**
@@ -171,7 +169,7 @@ class PsCartBanner extends Module
      */
     public function hookDisplayContentWrapperTop(array $params)
     {
-        if (isset($this->context->controller->controller_name) && $this->context->controller->controller_name !== 'cart') {
+        if ($this->context->controller->php_self !== 'cart') {
             return '';
         }
 

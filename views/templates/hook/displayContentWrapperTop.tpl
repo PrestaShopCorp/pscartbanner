@@ -23,6 +23,8 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-<div class="alert alert-info" style="border-color: {$bannerBorderColor|escape:'html':'UTF-8'}">
-  {$bannerContent nofilter}
+<div class="card" style="border: 3px solid {$bannerBorderColor|escape:'html':'UTF-8'};">
+  <div class="card-block">
+    {$bannerContent nofilter}
+  </div>
 </div>
