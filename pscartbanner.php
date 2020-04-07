@@ -99,11 +99,11 @@ class PsCartBanner extends Module
 
         foreach ($languages as $language) {
             if (Tools::strtolower($language['iso_code']) === 'fr') {
-                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Message à nos clients</strong></p>
-<p>En raison de la cette situation exceptionnelle les délais de préparation et d\'expédition de votre commande peuvent être rallongés. N\'hésitez pas à grouper vos commandes !</p>';
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Facilitez vos livraisons !</strong></p>
+<p>Avez-vous tout ce qu\'il vous faut dans votre panier ? En effet, en raison de la situation exceptionnelle, les délais d\'expédition et de livraison sont allongés aussi n\'hésitez pas à grouper vos commandes !</p>';
             } else {
-                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Message to our customers</strong></p>
-<p>Due to current circumstances some deliveries may take longer than usual ! Don\'t hesitate to group your weekly orders !</p>';
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Facilitate your deliveries!</strong></p>
+<p>Do you have everything you need in your basket? Indeed, due to the exceptional situation, the shipping and delivery times are longer so don\'t hesitate to group your orders!</p>';
             }
         }
 
@@ -169,7 +169,7 @@ class PsCartBanner extends Module
 
         $this->context->smarty->assign([
             'bannerContent' => Configuration::get(static::CONFIG_BANNER_CONTENT, (int) $this->context->language->id),
-            'bannerBorderColor' => Configuration::get(static::CONFIG_BANNER_BORDER_COLOR, (int) $this->context->language->id),
+            'bannerBorderColor' => Configuration::get(static::CONFIG_BANNER_BORDER_COLOR),
         ]);
 
         return $this->display(__FILE__, '/views/templates/hook/displayContentWrapperTop.tpl');

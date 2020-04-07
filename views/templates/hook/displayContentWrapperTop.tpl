@@ -17,8 +17,12 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-<div class="card" style="border: 3px solid {$bannerBorderColor|escape:'html':'UTF-8'};">
+<div class="card pscartbanner">
   <div class="card-block">
     {$bannerContent nofilter}
   </div>
 </div>
+
+<style>
+  .pscartbanner { border: 3px solid {$bannerBorderColor|escape:'html':'UTF-8'}; }
+</style>
