@@ -17,12 +17,10 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', false);
-header('Pragma: no-cache');
-
-header('Location: ../');
-exit;
+global $_MODULE;
+$_MODULE = [];
+$_MODULE['<{pscartbanner}prestashop>pscartbanner_8474ffa34c1da57b44fe49cb385cd8ca'] = 'Bannière sur la page panier';
+$_MODULE['<{pscartbanner}prestashop>pscartbanner_96df58db9bec7cfa22273ae2f10694c2'] = 'Affiche une bannière personnalisable sur la page panier. ';
+$_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_a3fcbca4ae66e2e8faad2ade91962215'] = 'Contenu';
+$_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_447efb99e205a877cbaf985ce87a01f4'] = 'Couleur de la bordure';
+$_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_c9cc8cce247e49bae79f15173ce97354'] = 'Enregistrer';

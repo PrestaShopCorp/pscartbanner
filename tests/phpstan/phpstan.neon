@@ -1,0 +1,13 @@
+parameters:
+	bootstrap: tests/phpstan/bootstrap.php
+	paths:
+		- controllers
+		- pscartbanner.php
+	dynamicConstantNames:
+		- _PS_VERSION_
+	ignoreErrors:
+		- '#Property ModuleCore::\$version \(float\) does not accept string.#'
+		- '#Parameter \#1 \$hook_name of method ModuleCore::registerHook\(\) expects string, array given.#'
+		- '#Property TabCore::\$name \(string\) does not accept array<string>.#'
+
+	level: 5

@@ -17,7 +17,6 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-
 class AdminPsCartBannerController extends ModuleAdminController
 {
     /**
@@ -32,9 +31,9 @@ class AdminPsCartBannerController extends ModuleAdminController
         parent::__construct();
 
         $this->fields_options = [
-            'ps_cartbanner' => [
+            'pscartbanner' => [
                 'fields' => [
-                    Ps_cartbanner::CONFIG_BANNER_CONTENT => [
+                    PsCartBanner::CONFIG_BANNER_CONTENT => [
                         'type' => 'textareaLang',
                         'rows' => 5,
                         'cols' => 40,
@@ -44,7 +43,7 @@ class AdminPsCartBannerController extends ModuleAdminController
                         'lang' => true,
                         'autoload_rte' => true,
                     ],
-                    Ps_cartbanner::CONFIG_BANNER_BORDER_COLOR => [
+                    PsCartBanner::CONFIG_BANNER_BORDER_COLOR => [
                         'type' => 'color',
                         'title' => $this->l('Banner border color'),
                         'validation' => 'isColor',
@@ -52,9 +51,9 @@ class AdminPsCartBannerController extends ModuleAdminController
                     ],
                 ],
                 'submit' => [
-                    'title' => $this->l('Save')
+                    'title' => $this->l('Save'),
                 ],
-            ]
+            ],
         ];
     }
 }

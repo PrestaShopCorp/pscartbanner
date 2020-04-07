@@ -17,23 +17,17 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-$autoloadPath = __DIR__ . '/vendor/autoload.php';
-if (file_exists($autoloadPath)) {
-    require_once $autoloadPath;
-}
-
-class Ps_cartbanner extends Module
+class PsCartBanner extends Module
 {
     /**
      * @var array Hooks used
      */
     public $hooks = [
-        'displayContentWrapperTop'
+        'displayContentWrapperTop',
     ];
 
     /**
@@ -46,18 +40,16 @@ class Ps_cartbanner extends Module
 
     public function __construct()
     {
-        $this->name = 'ps_cartbanner';
+        $this->name = 'pscartbanner';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
-        $this->bootstrap = true;
 
         parent::__construct();
 
         $this->displayName = $this->l('Cart banner');
         $this->description = $this->l('Adds a banner on cart with customized message.');
-        $this->confirmUninstall = $this->l('Are you sure you want to uninstall this module?');
         $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
     }
 
@@ -93,7 +85,7 @@ class Ps_cartbanner extends Module
             $this->displayName
         );
 
-        return $tab->add();
+        return (bool) $tab->add();
     }
 
     /**
@@ -101,8 +93,22 @@ class Ps_cartbanner extends Module
      */
     public function installConfiguration()
     {
-        return Configuration::updateValue(static::CONFIG_BANNER_CONTENT, array_fill_keys(Language::getIDs(false),'<h4>Make our planet greener and cleaner !</h4><p>To reduce packaging and transportation, group your weekly purchases.</p>'))
-            && Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#189300');
+        /** @var array $languages */
+        $languages = Language::getLanguages(false);
+        $bannerContentTranslated = [];
+
+        foreach ($languages as $language) {
+            if (Tools::strtolower($language['iso_code']) === 'fr') {
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Facilitez vos livraisons !</strong></p>
+<p>Avez-vous tout ce qu\'il vous faut dans votre panier ? En effet, en raison de la situation exceptionnelle, les délais d\'expédition et de livraison sont allongés aussi n\'hésitez pas à grouper vos commandes !</p>';
+            } else {
+                $bannerContentTranslated[(int) $language['id_lang']] = '<p><span class="material-icons">local_shipping</span> <strong>Facilitate your deliveries!</strong></p>
+<p>Do you have everything you need in your basket? Indeed, due to the exceptional situation, the shipping and delivery times are longer so don\'t hesitate to group your orders!</p>';
+            }
+        }
+
+        return (bool) Configuration::updateValue(static::CONFIG_BANNER_CONTENT, $bannerContentTranslated, true)
+            && (bool) Configuration::updateValue(static::CONFIG_BANNER_BORDER_COLOR, '#000000');
     }
 
     /**
@@ -126,7 +132,8 @@ class Ps_cartbanner extends Module
 
         if ($id_tab) {
             $tab = new Tab($id_tab);
-            return $tab->delete();
+
+            return (bool) $tab->delete();
         }
 
         return true;
@@ -137,8 +144,8 @@ class Ps_cartbanner extends Module
      */
     public function uninstallConfiguration()
     {
-        return Configuration::deleteByName(static::CONFIG_BANNER_CONTENT)
-            && Configuration::deleteByName(static::CONFIG_BANNER_BORDER_COLOR);
+        return (bool) Configuration::deleteByName(static::CONFIG_BANNER_CONTENT)
+            && (bool) Configuration::deleteByName(static::CONFIG_BANNER_BORDER_COLOR);
     }
 
     /**
@@ -156,13 +163,13 @@ class Ps_cartbanner extends Module
      */
     public function hookDisplayContentWrapperTop(array $params)
     {
-        if (isset($this->context->controller->controller_name) && $this->context->controller->controller_name !== 'cart') {
+        if ($this->context->controller->php_self !== 'cart') {
             return '';
         }
 
         $this->context->smarty->assign([
             'bannerContent' => Configuration::get(static::CONFIG_BANNER_CONTENT, (int) $this->context->language->id),
-            'bannerBorderColor' => Configuration::get(static::CONFIG_BANNER_BORDER_COLOR, (int) $this->context->language->id),
+            'bannerBorderColor' => Configuration::get(static::CONFIG_BANNER_BORDER_COLOR),
         ]);
 
         return $this->display(__FILE__, '/views/templates/hook/displayContentWrapperTop.tpl');
