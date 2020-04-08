@@ -45,6 +45,7 @@ class PsCartBanner extends Module
         $this->version = '1.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
+        $this->module_key = '3d10739ecd14e39868c81153c94a6f8c';
 
         parent::__construct();
 
