@@ -19,6 +19,13 @@
 
 {extends file="helpers/options/options.tpl"}
 
+{block name="defaultOptions"}
+  <div class="alert alert-info">
+    {l s='Your theme should use hook displayContentWrapperTop to display this banner on cart page.' mod='pscartbanner'}
+  </div>
+  {$smarty.block.parent}
+{/block}
+
 {block name="input"}
   {if $field['type'] == 'color'}
     <div class="col-lg-2">

@@ -24,3 +24,4 @@ $_MODULE['<{pscartbanner}prestashop>pscartbanner_96df58db9bec7cfa22273ae2f10694c
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_a3fcbca4ae66e2e8faad2ade91962215'] = 'Contenu';
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_447efb99e205a877cbaf985ce87a01f4'] = 'Couleur de la bordure';
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_c9cc8cce247e49bae79f15173ce97354'] = 'Enregistrer';
+$_MODULE['<{pscartbanner}prestashop>options_90fbc1cc37c2c3c8a7fb59573928f8fe'] = 'Votre thème doit implémenter le hook displayContentWrapperTop pour que cette bannière s\'affiche sur la page du panier.';
