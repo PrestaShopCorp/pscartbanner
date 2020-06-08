@@ -36,3 +36,11 @@
     {$smarty.block.parent}
   {/if}
 {/block}
+
+{block name="after"}
+  {$smarty.block.parent}
+  <script type="text/javascript">
+    // https://github.com/PrestaShop/PrestaShop/pull/18757
+    $.fn.mColorPicker.defaults.imageFolder = baseDir + 'img/admin/';
+  </script>
+{/block}
