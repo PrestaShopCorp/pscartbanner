@@ -10,16 +10,14 @@
             "email": "contact@prestashop.com"
         }
     ],
-    "require": {
-        "php": ">=5.6"
-    },
     "require-dev": {
-        "prestashop/php-dev-tools": "^2.2"
+        "prestashop/php-dev-tools": "~3.0"
     },
     "config": {
         "platform": {
             "php": "5.6.0"
         },
+        "sort-packages": true,
         "preferred-install": "dist",
         "optimize-autoloader": true,
         "prepend-autoloader": false
@@ -28,6 +26,11 @@
         "classmap": [
             "controllers",
             "pscartbanner.php"
+        ]
+    },
+    "scripts": {
+        "set-license-header": [
+            "@php ./vendor/bin/header-stamp --license=\"assets/afl.txt\" --exclude=\".github,vendor\""
         ]
     }
 }
