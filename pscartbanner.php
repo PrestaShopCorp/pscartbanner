@@ -42,7 +42,7 @@ class PsCartBanner extends Module
     {
         $this->name = 'pscartbanner';
         $this->tab = 'front_office_features';
-        $this->version = '1.0.0';
+        $this->version = '1.0.1';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
         $this->module_key = '3d10739ecd14e39868c81153c94a6f8c';
