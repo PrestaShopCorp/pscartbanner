@@ -19,6 +19,13 @@
 
 {extends file="helpers/options/options.tpl"}
 
+{block name="defaultOptions"}
+  <div class="alert alert-info">
+    {l s='Your theme should use hook displayContentWrapperTop to display this banner on cart page.' mod='pscartbanner'}
+  </div>
+  {$smarty.block.parent}
+{/block}
+
 {block name="input"}
   {if $field['type'] == 'color'}
     <div class="col-lg-2">
@@ -35,4 +42,12 @@
   {else}
     {$smarty.block.parent}
   {/if}
+{/block}
+
+{block name="after"}
+  {$smarty.block.parent}
+  <script type="text/javascript">
+    // https://github.com/PrestaShop/PrestaShop/pull/18757
+    $.fn.mColorPicker.defaults.imageFolder = baseDir + 'img/admin/';
+  </script>
 {/block}
