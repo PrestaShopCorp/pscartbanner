@@ -38,8 +38,14 @@ class AdminPsCartBannerController extends ModuleAdminController
                         'rows' => 5,
                         'cols' => 40,
                         'title' => $this->l('Banner content'),
+                        'desc' => strtr(
+                            $this->l('You can replace current icon "local_shipping" by another from [link]material icon library[/link] or replace it by an image thanks to content editor.'),
+                            [
+                                '[link]' => '<a href="https://material.io/resources/icons/" target="_blank">',
+                                '[/link]' => '</a>',
+                            ]
+                        ),
                         'validation' => 'isCleanHtml',
-                        //'required' => true,
                         'lang' => true,
                         'autoload_rte' => true,
                     ],

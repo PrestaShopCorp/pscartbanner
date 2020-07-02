@@ -22,5 +22,6 @@ $_MODULE = [];
 $_MODULE['<{pscartbanner}prestashop>pscartbanner_8474ffa34c1da57b44fe49cb385cd8ca'] = 'Bannière sur la page panier';
 $_MODULE['<{pscartbanner}prestashop>pscartbanner_96df58db9bec7cfa22273ae2f10694c2'] = 'Affiche une bannière personnalisable sur la page panier. ';
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_a3fcbca4ae66e2e8faad2ade91962215'] = 'Contenu';
+$_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_1763186ab49bf57d400a9b7829549e05'] = 'Vous pouvez remplacer l\'icône actuel \"local_shipping\" par un autre provenant de la [link]bibliothèque "material icon"[/link] ou utiliser une image à l\'aide de l\'éditeur de contenu.';
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_447efb99e205a877cbaf985ce87a01f4'] = 'Couleur de la bordure';
 $_MODULE['<{pscartbanner}prestashop>adminpscartbannercontroller_c9cc8cce247e49bae79f15173ce97354'] = 'Enregistrer';
