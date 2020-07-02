@@ -2,7 +2,7 @@
 <module>
   <name>pscartbanner</name>
   <displayName><![CDATA[Cart banner]]></displayName>
-  <version><![CDATA[1.0.1]]></version>
+  <version><![CDATA[1.0.2]]></version>
   <description><![CDATA[Adds a banner on cart with customized message.]]></description>
   <author><![CDATA[PrestaShop]]></author>
   <tab><![CDATA[front_office_features]]></tab>
