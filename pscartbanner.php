@@ -173,6 +173,6 @@ class PsCartBanner extends Module
             'bannerBorderColor' => Configuration::get(static::CONFIG_BANNER_BORDER_COLOR),
         ]);
 
-        return $this->display(__FILE__, '/views/templates/hook/displayContentWrapperTop.tpl');
+        return $this->display(__FILE__, 'views/templates/hook/displayContentWrapperTop.tpl');
     }
 }
